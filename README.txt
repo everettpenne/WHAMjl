@@ -40,3 +40,5 @@ PROJECT STRUCTURE:
 ├── Manifest.toml    <- Contains full list of exact package versions used currently.
 └── Project.toml     <- Main project file, allows activation and installation.
                         Includes DrWatson by default.
+
+WHAMjl Personal Access Token: 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

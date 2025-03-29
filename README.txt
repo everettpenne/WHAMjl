@@ -2,6 +2,8 @@ Readme for this the WHAMjl project.
 Inspiration from: https://juliadynamics.github.io/DrWatson.jl/v0.4/project/#Default-Project-Setup-1
 UW-Madison resources: https://www.sscc.wisc.edu/sscc/pubs/Julia/using_julia_projects.html
 
+Here is some text I added to this readme while remoted into Jack; if all went well, I managed to commit this to github!
+
 #=========================================================================================#
 
 PROJECT STRUCTURE:

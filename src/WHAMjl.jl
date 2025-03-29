@@ -5,8 +5,6 @@ using PyCall
 # Import MDSplus using Python (as long as Python has it installed)
 mds = pyimport("MDSplus")
 
-greet() = print("Hello World!")
-
 title() = print(
     "      _____        ___   _    _    __  __  ___
     / \\  \\ \\      / | | | |  / \\  |  \\/  |/ \\ \\
@@ -17,5 +15,17 @@ title() = print(
 )
 
 title()
+
+"""
+Shinethru MDS data structure.
+ips -- impact parameter, Vector{Float64} for channels 1-15
+ch -- shinethru channels, Vector{Vector{Float64}} for channel data arrays 1-15
+time -- channel times, Vector{Vector{Float64}}
+"""
+struct st
+    ips::Vector{Float64} # Only Float64 values allowed (Impact Parameter)
+    ch::Vector{Vector{Float64}}  # Only Float64 arrays allowed (Channels 1-15 data arrays)
+    time::Vector{Vector{Float64}} # Only Float64 arrays allowed (Channels 1-15 data arrays)
+end
 
 end # module WHAMjl

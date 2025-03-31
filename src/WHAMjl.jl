@@ -32,26 +32,44 @@ struct st
     time::Vector{Vector{Float64}} # Only Float64 arrays allowed (Channels 1-15 data arrays)
 end
 
-function get_shinethru(treename::String=default_tree, shotnum::Int)
+"""
+Get shinethru data from MDSplus tree
+"""
+function get_shinethru(shotnum::Int, treename::String="wham")
     tree = mds.Tree(treename, shotnum)
     basepath::String = "diag.shinethru.linedens.linedens_"
+    impact_path = "diag.shinethru.linedens.detector_pos"
 
+    impact_parameters = Vector{Vector{Float64}}()
     times = Vector{Vector{Float64}}()
     channels = Vector{Vector{Float64}}()
+
+    impact_node = tree.getNode(impact_path)
+    impact_parameters = Float64.(PyVector(impact_node.data()))
 
     for ch in 1:15
         if ch != 6
             absolutepath = basepath * @sprintf("%02d", ch)
             see_node = tree.getNode(absolutepath)
-            ch_time = see_node.dim_of().getData()
-            ch_data = see_node.dim_of().getData()
+            ch_time = Float64.(PyVector(see_node.dim_of().data()))
+            ch_data = Float64.(PyVector(see_node.data()))
             push!(times, ch_time)
             push!(channels, ch_data)
         end
     end
 
     #data = node.getData().data()
-    return times, channels
+    return impact_parameters, times, channels
 end
+
+function moment(x::Vector, k::Int, c::Int=0)
+    n = length(x)
+    m::Int = nothing
+    for j in 1:n
+        m += m[j]
+    end
+end
+
+export st, get_shinethru, title
 
 end # module WHAMjl

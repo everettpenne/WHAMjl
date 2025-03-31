@@ -2,3 +2,11 @@ name = "WHAMjl"
 uuid = "4dfd5a3d-4e99-4a8f-96c2-ffe819e24f04"
 authors = ["everettpenne "]
 version = "0.1.0"
+
+[deps]
+Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
+PyCall = "438e738f-606a-5dbb-bf0a-cddfbfd45ab0"
+
+[compat]
+Printf = "1.11.0"
+PyCall = "1.96.4"

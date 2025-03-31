@@ -62,12 +62,22 @@ function get_shinethru(shotnum::Int, treename::String="wham")
     return impact_parameters, times, channels
 end
 
-function moment(x::Vector, k::Int, c::Int=0)
-    n = length(x)
-    m::Int = nothing
+"""
+Calculate the moment of a data sample distribution as found here: https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.moment.html
+Arguments:
+	--> distribution x as vector
+	--> specify which moment k (int) to take
+	--> center c is a float, should match data type of x
+"""
+function moment(x::Vector{Float64}, k::Int, c::Float64=0)
+    n = length(x) # Length of distribution (discrete variable)
+    m::Float64 = nothing # Initialize moment m variable as no value
     for j in 1:n
-        m += m[j]
+	dm = x[j] - c
+        m += dm ^ k
     end
+    m = m / n
+    return moment
 end
 
 export st, get_shinethru, title

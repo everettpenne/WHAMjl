@@ -35,7 +35,7 @@ end
 """
 Get shinethru data from MDSplus tree
 """
-function get_shinethru(shotnum::Int, treename::String="wham")
+function get_shinethru(treename::String="wham", shotnum::Int)
     tree = mds.Tree(treename, shotnum)
     basepath::String = "diag.shinethru.linedens.linedens_"
     impact_path = "diag.shinethru.linedens.detector_pos"

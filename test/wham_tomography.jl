@@ -12,7 +12,8 @@ impact_parameters, times, f = get_shinethru(shot, tree)
 T, R = compute_T_matrix(impact_parameters)
 
 # Choose time indices (using just one time point in this example)
-time_indices = [6350, 10000, 15000, 20000, 21000]  # Make sure this is within bounds of your data
+#time_indices = [6350, 10000, 15000, 20000, 21000]  # Make sure this is within bounds of your data
+time_indices = [6000, 6250, 6500, 6750, 7000, 7250, 7500, 7750, 8000, 8250, 8500, 8750, 9000, 9250, 9500, 9750, 10000, 10250, 10500, 10750, 11000, 11250, 11500, 11750, 12000, 12250, 12500, 12750, 13000, 13250, 13500, 13750, 14000, 14250, 14500, 14750, 15000, 15250, 15500, 15750, 16000, 16250, 16500, 16750, 17000, 17250, 17500, 17750, 18000, 18250, 18500, 18750, 19000, 19250, 19500, 19750, 20000, 20250, 20500, 20750, 21000, 21250]
 
 # Initialize f_t as a matrix where each column is a time point
 f_t = Matrix{Float64}(undef, length(f), length(time_indices))

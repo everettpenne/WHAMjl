@@ -24,19 +24,25 @@ for (j, t) in enumerate(time_indices)
     end
 end
 
+#for time in time_indices
+
+#end
+
 λ = 1e-3  # Regularization parameter
 g_reg = (T' * T + λ * I) \ (T' * f_t)
 
-#display(f_t)
-display(g_reg)
+# Define the x-axis (time) as a single bin [left_edge, right_edge]
+x_edges = [0.5, 1.5]  # Centers the single column at x=1
 
-# Create the heatmap
-heatmap(1:1, 1:length(g_reg), g_reg,
-    c=:thermal,  # Color scheme (you can choose others like :viridis, :plasma, etc.)
-    xlabel="Time (single point)",
-    ylabel="g_reg index",
-    title="Regularized Solution g_reg at Time Index $(time_indices[1])",
-    xticks=([1], [string(time_indices[1])]))  # Set custom x-axis tick
+# Define y-axis edges (each pixel spans from i-0.5 to i+0.5)
+y_edges = 0.5:1:(length(g_reg)+0.5)
 
-# If you want to save the plot
-savefig("g_reg_heatmap.png")
+# Plot heatmap with explicit edges
+heatmap(
+    x_edges, y_edges, reshape(g_reg, (1, length(g_reg))),  # Reshape to matrix
+    c=:viridis,
+    xlabel="Time",
+    ylabel="g_reg Index",
+    title="Heatmap with Adjusted Pixel Width",
+    aspect_ratio=:auto  # Ensures square pixels if desired
+)
